@@ -1,16 +1,37 @@
-#variables compartidas
-cliente1 = {'nombre': 'leonard', 'apellido': 'hernandez'}
-vuelo1 = {'origen': 'londres', 'destino': 'nueva york'}
-hotel1 = {'nombre': 'hotel bolivar', 'ciudad': 'londres'}
+# definicion de clases
+class Cliente:
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
 
-lista_clientes = [cliente1]
-lista_vuelos = [vuelo1]
-lista_hoteles =[hotel1]
+class Vuelo:
+    def __init__(self, origen, destino):
+        self.origen = origen
+        self.destino = destino
 
-reserva = {'cliente': cliente1, 'vuelo': vuelo1, 'hotel': hotel1, 'vuelo_regreso': vuelo1}
-paquete_turistico = {"ciudad": 'londres', 'vuelo_ida': vuelo1, 'vuelo_regreso': vuelo1, 'hotel': hotel1}
+class Hotel:
+    def __init__(self, nombre, ciudad):
+        self.nombre = nombre
+        self.ciudad = ciudad
 
-lista_reservas = [reserva]
-paquete_turisticos = [paquete_turistico]
+class Reserva:
+    def __init__(self, cliente, vuelo_ida, vuelo_regreso, hotel):
+        self.cliente = cliente
+        self.vuelo_ida = vuelo_ida
+        self.vuelo_regreso = vuelo_regreso
+        self.hotel = hotel
 
+class PaqueteTuristico:
+    def __init__(self, ciudad, vuelo_ida, vuelo_regreso, hotel):
+        self.ciudad = ciudad
+        self.vuelo_ida = vuelo_ida
+        self.vuelo_regreso = vuelo_regreso
+        self.hotel = hotel
 
+# creacion de variables compartidas
+
+clientes = []
+vuelos = []
+hoteles = []
+reservas = []
+paquetes_turisticos = []
