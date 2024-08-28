@@ -50,3 +50,9 @@ class PaqueteTuristico:
 
         PaqueteTuristico._id_counter += 1
 
+# variables compartidas
+clientes = []
+vuelos = []
+hoteles = []
+reservas = []
+paquetes_turisticos = []
