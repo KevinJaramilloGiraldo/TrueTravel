@@ -56,3 +56,17 @@ vuelos = []
 hoteles = []
 reservas = []
 paquetes_turisticos = []
+
+# Funciones
+
+        # Función de agregar clientes
+def agregarClientes (nombre, apellido):
+        #Variable de la función para ir contando cuantos clientes se han agregado
+        for i in clientes:
+            if i.nombre==nombre and i.apellido==apellido:
+                print ("El cliente ya existe")
+                return
+        newCliente=Cliente(nombre,apellido)
+        clientes.append(newCliente)
+        print ("Cliente creado con exito")
+        return
