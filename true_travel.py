@@ -57,9 +57,12 @@ hoteles = []
 reservas = []
 paquetes_turisticos = []
 
+#prueba
+
 # Funciones
 
-        # Función de agregar clientes
+# Funciones de cliente
+
 def agregarClientes (nombre, apellido):
         #Variable de la función para ir contando cuantos clientes se han agregado
         for i in clientes:
@@ -70,3 +73,4 @@ def agregarClientes (nombre, apellido):
         clientes.append(newCliente)
         print ("Cliente creado con exito")
         return
+
