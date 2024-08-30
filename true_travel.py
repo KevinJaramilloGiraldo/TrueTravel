@@ -69,3 +69,5 @@ hoteles = [
     Hotel("Hotel Bolivar", "Bogota"),
     Hotel("Casa Blanca", "Lima"),
 ]
+reservas = []
+paquetes_turisticos = []
