@@ -1,3 +1,4 @@
+import os
 # definicion de clases
 class Cliente:
      # Variable de clase para el contador de IDs
@@ -97,3 +98,119 @@ def agregarClientes (nombre, apellido):
 # Funciones de vuelos
 
 # Interfaz de usuario
+
+# Interfaces de Cliente
+def interfazCrearCliente():
+
+    # limpiando consola
+    os.system("cls")
+
+    # Crear cliente
+    print("CREAR CLIENTE (presione x para volver al menu)")
+
+    print("Ingresa el nombre: ")
+    nombre = input()
+    # Validar que el usuario no quiera volver al menu
+    if nombre == "x":
+        return
+    
+    print("Ingresa el apellido: ")
+    apellido = input()
+    # Validar que el usuario no quiera volver al menu
+    if apellido == "x":
+        return
+    
+    # Crear cliente
+    agregarClientes(nombre, apellido)
+    input("Presione enter para volver al menu")
+
+def interfazListarClientes():
+    #limpiando consola
+    os.system("cls")
+
+    # Metodos de consulta
+    print("Como deseas Consultar?")
+    print("1. Por ID")
+    print("2. Por Nombre y apellido")
+    print("3. Listar todos los clientes")
+    comand = input()
+
+    #por id
+    if comand == "1":
+
+        print("no implementado todavia")
+
+    #por nombre y apellido
+    elif comand == "2":
+
+        print("no implementado todavia")
+
+    #listar todos los clientes
+    elif comand == "3":
+
+        print("Listado de clientes")
+
+        for i in clientes:
+            print(f"{i.id} {i.nombre} {i.apellido}")
+
+        input("Presione enter para volver al menu")
+
+comand = ""
+while True:
+    #banner
+    print(
+        """
+             ███████████                                   █████                                             ████ 
+            ░█░░░███░░░█                                  ░░███                                             ░░███ 
+            ░   ░███  ░  ████████  █████ ████  ██████     ███████   ████████   ██████   █████ █████  ██████  ░███ 
+                ░███    ░░███░░███░░███ ░███  ███░░███   ░░░███░   ░░███░░███ ░░░░░███ ░░███ ░░███  ███░░███ ░███ 
+                ░███     ░███ ░░░  ░███ ░███ ░███████      ░███     ░███ ░░░   ███████  ░███  ░███ ░███████  ░███ 
+                ░███     ░███      ░███ ░███ ░███░░░       ░███ ███ ░███      ███░░███  ░░███ ███  ░███░░░   ░███ 
+                █████    █████     ░░████████░░██████      ░░█████  █████    ░░████████  ░░█████   ░░██████  █████
+               ░░░░░    ░░░░░       ░░░░░░░░  ░░░░░░        ░░░░░  ░░░░░      ░░░░░░░░    ░░░░░     ░░░░░░  ░░░░░  
+
+        """
+    )
+    # menu
+    print("Que desea hacer?")
+    print("1. Crear")
+    print("2. Reservar")
+    print("3. Consultar")
+    print("x. Salir")
+
+    # variable de control de opciones
+    comand = input()
+
+    # Crear
+    if comand == "1":
+
+        print("Que desea crear?")
+        print("1. Cliente")
+
+        comand = input()
+
+        #Crear cliente
+        if comand == "1":
+            interfazCrearCliente()
+
+    elif comand == "2":
+        print("Reservando")
+    #Consultando
+    elif comand == "3":
+
+        print("Que desea consultar?")
+        print("1. Cliente")
+        comand = input()
+        
+        #Consultar cliente
+        if comand == "1":
+            interfazListarClientes()
+
+    elif comand == "x":
+        break
+    else:
+        print("Opcion no valida")
+        input("Presione enter para volver al menu")
+        continue
+
+print("Gracias por usar True Travel")
