@@ -51,9 +51,24 @@ class PaqueteTuristico:
         PaqueteTuristico._id_counter += 1
 
 # variables compartidas
-clientes = []
-vuelos = []
-hoteles = []
+clientes = [
+    Cliente("Juan", "Perez"),
+    Cliente("Maria", "Gonzalez"),
+    Cliente("Pedro", "Lopez"),
+    Cliente("Ana", "Martinez"),
+]
+vuelos = [
+    Vuelo("Lima", "Cusco"),
+    Vuelo("Cusco", "Lima"),
+    Vuelo("bogota", "lima"),
+    Vuelo("lima", "bogota"),
+]
+hoteles = [
+    Hotel("Hilton", "Lima"),
+    Hotel("Sheraton", "Cusco"),
+    Hotel("Hotel Bolivar", "Bogota"),
+    Hotel("Casa Blanca", "Lima"),
+]
 reservas = []
 paquetes_turisticos = []
 
