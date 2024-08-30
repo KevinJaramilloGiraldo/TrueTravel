@@ -1,7 +1,7 @@
 import os
 # definicion de clases
 class Cliente:
-     # Variable de clase para el contador de IDs
+    # Variable de clase para el contador de IDs
     _id_counter = 1
     
     def __init__(self, nombre, apellido):
@@ -95,7 +95,33 @@ def agregarClientes (nombre, apellido):
 
 # Funciones de hoteles
 
+def agregarHotel(nombre, ciudad):
+
+    for hotel in hoteles:
+        if hotel.nombre == nombre and hotel.ciudad == ciudad:
+                print ("El hotel ya existe")
+                return
+            
+    newHotel = Hotel(nombre,ciudad)
+    hoteles.append(newHotel)
+    print ("Hotel creado con éxito")
+    
+    return
+
 # Funciones de vuelos
+
+def agregarVuelo(origen, destino):
+    
+    for vuelo in vuelos:
+        if vuelo.origen == origen and vuelo.destino == destino:
+            print("El vuelo ya existe")
+            return
+    
+    newVuelo = Vuelo(origen, destino)
+    vuelos.append(newVuelo)
+    print("Vuelo creado con éxito")
+    
+    return
 
 # Interfaz de usuario
 
