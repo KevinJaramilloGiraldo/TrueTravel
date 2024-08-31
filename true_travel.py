@@ -93,6 +93,50 @@ def agregarClientes (nombre, apellido):
 
 # Funciones de reservas
 
+def crearReserva(cliente_id, vuelo_ida_id, vuelo_regreso_id, hotel_id):
+    # Verificar si el cliente existe
+    cliente = next((c for c in clientes if c.id == cliente_id), None)
+    if not cliente:
+        print("El cliente no existe.")
+        return
+    
+    # Verificar si el vuelo de ida existe
+    vuelo_ida = next((v for v in vuelos if v.id == vuelo_ida_id), None)
+    if not vuelo_ida:
+        print("El vuelo de ida no existe.")
+        return
+    
+    # Verificar si el vuelo de regreso existe
+    vuelo_regreso = next((v for v in vuelos if v.id == vuelo_regreso_id), None)
+    if not vuelo_regreso:
+        print("El vuelo de regreso no existe.")
+        return
+    
+    # Verificar si el hotel existe
+    hotel = next((h for h in hoteles if h.id == hotel_id), None)
+    if not hotel:
+        print("El hotel no existe.")
+        return
+    
+    # Crear la reserva
+    nueva_reserva = Reserva(cliente, vuelo_ida, vuelo_regreso, hotel)
+    reservas.append(nueva_reserva)
+    
+    print(f"Reserva creada con éxito para {cliente.nombre} {cliente.apellido}.")
+    return
+
+def listarReservas():
+    if not reservas:
+        print("No hay reservas registradas.")
+        return
+    
+    for reserva in reservas:
+        print(f"Reserva ID: {reserva.id} - Cliente: {reserva.cliente.nombre} {reserva.cliente.apellido}")
+        print(f"  Vuelo de ida: {reserva.vuelo_ida.origen} -> {reserva.vuelo_ida.destino}")
+        print(f"  Vuelo de regreso: {reserva.vuelo_regreso.origen} -> {reserva.vuelo_regreso.destino}")
+        print(f"  Hotel: {reserva.hotel.nombre} en {reserva.hotel.ciudad}")
+        print()
+
 # Funciones de hoteles
 
 def agregarHotel(nombre, ciudad):
@@ -108,6 +152,36 @@ def agregarHotel(nombre, ciudad):
     
     return
 
+def buscarHotel(nombre=None, ciudad=None):
+    # Lista para almacenar los hoteles encontrados
+    hoteles_encontrados = []
+    
+    # Buscar por nombre y ciudad
+    if nombre and ciudad:
+        hoteles_encontrados = [hotel for hotel in hoteles if hotel.nombre.lower() == nombre.lower() and hotel.ciudad.lower() == ciudad.lower()]
+    
+    # Buscar solo por nombre
+    elif nombre:
+        hoteles_encontrados = [hotel for hotel in hoteles if hotel.nombre.lower() == nombre.lower()]
+    
+    # Buscar solo por ciudad
+    elif ciudad:
+        hoteles_encontrados = [hotel for hotel in hoteles if hotel.ciudad.lower() == ciudad.lower()]
+    
+    # Si no se especifica ni nombre ni ciudad, mostrar todos los hoteles
+    else:
+        hoteles_encontrados = hoteles
+    
+    # Verificar si se encontraron hoteles
+    if hoteles_encontrados:
+        print(f"Se encontraron {len(hoteles_encontrados)} hotel(es):")
+        for hotel in hoteles_encontrados:
+            print(f"ID: {hotel.id}, Nombre: {hotel.nombre}, Ciudad: {hotel.ciudad}")
+    else:
+        print("No se encontraron hoteles con los criterios de búsqueda.")
+    
+    return hoteles_encontrados
+
 # Funciones de vuelos
 
 def agregarVuelo(origen, destino):
@@ -122,6 +196,36 @@ def agregarVuelo(origen, destino):
     print("Vuelo creado con éxito")
     
     return
+
+def buscarVuelo(origen=None, destino=None):
+    # Lista para almacenar los vuelos encontrados
+    vuelos_encontrados = []
+    
+    # Buscar por origen y destino
+    if origen and destino:
+        vuelos_encontrados = [vuelo for vuelo in vuelos if vuelo.origen.lower() == origen.lower() and vuelo.destino.lower() == destino.lower()]
+    
+    # Buscar solo por origen
+    elif origen:
+        vuelos_encontrados = [vuelo for vuelo in vuelos if vuelo.origen.lower() == origen.lower()]
+    
+    # Buscar solo por destino
+    elif destino:
+        vuelos_encontrados = [vuelo for vuelo in vuelos if vuelo.destino.lower() == destino.lower()]
+    
+    # Si no se especifica ni origen ni destino, mostrar todos los vuelos
+    else:
+        vuelos_encontrados = vuelos
+    
+    # Verificar si se encontraron vuelos
+    if vuelos_encontrados:
+        print(f"Se encontraron {len(vuelos_encontrados)} vuelo(s):")
+        for vuelo in vuelos_encontrados:
+            print(f"ID: {vuelo.id}, Origen: {vuelo.origen}, Destino: {vuelo.destino}")
+    else:
+        print("No se encontraron vuelos con los criterios de búsqueda.")
+    
+    return vuelos_encontrados
 
 # Interfaz de usuario
 
