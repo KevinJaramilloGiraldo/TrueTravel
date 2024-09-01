@@ -1,26 +1,24 @@
-from model.vuelo import vuelo
-class vuelo_service:
+from model.vuelo import Vuelo
+
+class VueloService:
 
     def __init__(self):
         self.vuelos = [
-            vuelo("Lima", "Cusco"),
-            vuelo("Cusco", "Lima"),
-            vuelo("bogota", "lima"),
-            vuelo("lima", "bogota")
+            Vuelo("Lima", "Cusco"),
+            Vuelo("Cusco", "Lima"),
+            Vuelo("bogota", "lima"),
+            Vuelo("lima", "bogota")
         ]
 
     def agregarVuelo(self, origen, destino):
             
         for vuelo in self.vuelos:
             if vuelo.origen == origen and vuelo.destino == destino:
-                    print("El vuelo ya existe")
-                    return
+                    return vuelo
             
-        newVuelo = vuelo(origen, destino)
+        newVuelo = Vuelo(origen, destino)
         self.vuelos.append(newVuelo)
-        print("Vuelo creado con éxito")
-
-        return
+        return newVuelo
 
     def buscarVuelo(self, origen=None, destino=None):
         # Lista para almacenar los vuelos encontrados
@@ -44,10 +42,6 @@ class vuelo_service:
             
         # Verificar si se encontraron vuelos
         if vuelos_encontrados:
-            print(f"Se encontraron {len(vuelos_encontrados)} vuelo(s):")
-            for vuelo in vuelos_encontrados:
-                print(f"ID: {vuelo.id}, Origen: {vuelo.origen}, Destino: {vuelo.destino}")
+            return vuelos_encontrados
         else:
-            print("No se encontraron vuelos con los criterios de búsqueda.")
-            
-        return vuelos_encontrados
+            return None

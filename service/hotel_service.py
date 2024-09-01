@@ -1,26 +1,23 @@
-from model.hotel import hotel
+from model.hotel import Hotel
 
-
-class hotel_service:
+class HotelService:
     def __init__(self):
+        
         self.hoteles = [
-            hotel("Hilton", "Lima"),
-            hotel("Sheraton", "Cusco"),
-            hotel("Hotel Bolivar", "Bogota"),
-            hotel("Casa Blanca", "Lima"),
+            Hotel("Hilton", "Lima"),
+            Hotel("Sheraton", "Cusco"),
+            Hotel("Hotel Bolivar", "Bogota"),
+            Hotel("Casa Blanca", "Lima")
         ]
     def agregarHotel(self, nombre, ciudad):
 
         for hotel in self.hoteles:
             if hotel.nombre == nombre and hotel.ciudad == ciudad:
-                    print ("El hotel ya existe")
-                    return
+                return hotel
                 
-        newHotel = hotel(nombre,ciudad)
-        self.hoteles.append(newHotel)
-        print ("Hotel creado con éxito")
-        
-        return
+        newHotel = Hotel(nombre,ciudad)
+        self.hoteles.append(newHotel)      
+        return newHotel
 
     def buscarHotel(self, nombre=None, ciudad=None):
         # Lista para almacenar los hoteles encontrados
@@ -44,10 +41,6 @@ class hotel_service:
         
         # Verificar si se encontraron hoteles
         if hoteles_encontrados:
-            print(f"Se encontraron {len(hoteles_encontrados)} hotel(es):")
-            for hotel in hoteles_encontrados:
-                print(f"ID: {hotel.id}, Nombre: {hotel.nombre}, Ciudad: {hotel.ciudad}")
+            return hoteles_encontrados
         else:
-            print("No se encontraron hoteles con los criterios de búsqueda.")
-        
-        return hoteles_encontrados
+            return None
