@@ -4,38 +4,31 @@ class HotelService:
     def __init__(self):
         
         self.hoteles = [
-            Hotel("Hilton", "Lima"),
-            Hotel("Sheraton", "Cusco"),
-            Hotel("Hotel Bolivar", "Bogota"),
-            Hotel("Casa Blanca", "Lima")
+            Hotel("Hilton", 180000),
+            Hotel("Sheraton", 140000),
+            Hotel("Hotel Bolivar", 600000),
+            Hotel("Casa Blanca", 1300000)
         ]
-    def agregarHotel(self, nombre, ciudad):
-
+    def agregarHotel(self, nombre, precioPorNoche):
         for hotel in self.hoteles:
-            if hotel.nombre == nombre and hotel.ciudad == ciudad:
+            if hotel.nombre == nombre: 
                 return hotel
                 
-        newHotel = Hotel(nombre,ciudad)
+        newHotel = Hotel(nombre,precioPorNoche)
         self.hoteles.append(newHotel)      
         return newHotel
 
-    def buscarHotel(self, nombre=None, ciudad=None):
+    def buscarHotel(self, id=None, nombre=None):
         # Lista para almacenar los hoteles encontrados
         hoteles_encontrados = []
         
-        # Buscar por nombre y ciudad
-        if nombre and ciudad:
-            hoteles_encontrados = [hotel for hotel in self.hoteles if hotel.nombre.lower() == nombre.lower() and hotel.ciudad.lower() == ciudad.lower()]
-        
         # Buscar solo por nombre
-        elif nombre:
+        if nombre:
             hoteles_encontrados = [hotel for hotel in self.hoteles if hotel.nombre.lower() == nombre.lower()]
-        
-        # Buscar solo por ciudad
-        elif ciudad:
-            hoteles_encontrados = [hotel for hotel in self.hoteles if hotel.ciudad.lower() == ciudad.lower()]
-        
-        # Si no se especifica ni nombre ni ciudad, mostrar todos los hoteles
+        # Buscar solo por id
+        elif id:
+            hoteles_encontrados = [hotel for hotel in self.hoteles if hotel.id == id]
+        # Si no se especifica mostrar todos los hoteles
         else:
             hoteles_encontrados = self.hoteles
         
@@ -44,3 +37,5 @@ class HotelService:
             return hoteles_encontrados
         else:
             return None
+
+
