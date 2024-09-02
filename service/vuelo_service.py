@@ -40,6 +40,8 @@ class VueloService:
         # Si no se especifica ni origen ni destino, mostrar todos los vuelos
         elif id:
             vuelos_encontrados = [vuelo for vuelo in self.vuelos if vuelo.id == id]
+            if vuelos_encontrados:
+                vuelos_encontrados = vuelos_encontrados[0]
             
         else:
             vuelos_encontrados = self.vuelos

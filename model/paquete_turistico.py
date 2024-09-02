@@ -1,6 +1,6 @@
 class PaqueteTuristico:
     _id_counter = 1
-    def __init__(self, destino, hotel, vuelo,diasEstancia):
+    def __init__(self, destino, hotel, vuelo, diasEstancia):
         self.id = PaqueteTuristico._id_counter
         self.destino = destino
         self.diasEstancia = int(diasEstancia)

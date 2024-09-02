@@ -1,7 +1,6 @@
 prueba2.py
-model/__pycache__
-service/__pycache__
-model/__pycache__/__init__.cpython-312.pyc
-model/__pycache__/cliente.cpython-312.pyc
-service/__pycache__/__init__.cpython-312.pyc
-service/__pycache__/cliente_service.cpython-312.pyc
+model/__pycache__/*
+service/__pycache__/*
+utils/__pycache__/*
+view/__pycache__/*
+

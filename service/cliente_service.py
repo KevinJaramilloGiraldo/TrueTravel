@@ -34,9 +34,8 @@ class ClienteService:
         else:
             return None
 
-    def buscarClientesPorID (self,id):
+    def buscarClientesPorID (self, id):
         for cliente in self.clientes:
             if cliente.id==id:
                     return cliente
-            else:
-                return None
+        return None

@@ -28,6 +28,8 @@ class HotelService:
         # Buscar solo por id
         elif id:
             hoteles_encontrados = [hotel for hotel in self.hoteles if hotel.id == id]
+            if hoteles_encontrados:
+                hoteles_encontrados = hoteles_encontrados[0]
         # Si no se especifica mostrar todos los hoteles
         else:
             hoteles_encontrados = self.hoteles
